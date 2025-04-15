@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/15.ico" type="image/x-icon">
+  <title>Nosso Amor 💖</title>
+</head>
+<body>
+  <div class="container" onclick="playMusic(event)"> <!-- Passa o evento para a função -->
+    <h1>Raidaerick e Maria Clara</h1>
+    <div class="start-date">
+      <p>Iniciamos em: <span id="start-date">2024-12-28</span></p>
+    </div>
+    <p>Estamos juntos há <span id="days-together"></span> dias 💘</p>
+
+    <h2>Nossas Memórias</h2>
+    
+    <div class="slideshow">
+      <button class="prev" onclick="changeSlide(-1, event)">❮</button>
+      <div class="slides">
+        <img src="images/1.jpeg" alt="Foto 1" class="slide">
+        <img src="images/2.jpeg" alt="Foto 2" class="slide">
+        <img src="images/3.jpeg" alt="Foto 3" class="slide">
+        <img src="images/4.jpeg" alt="Foto 4" class="slide">
+        <img src="images/5.jpeg" alt="Foto 5" class="slide">
+        <img src="images/6.jpeg" alt="Foto 6" class="slide">
+        <img src="images/7.jpeg" alt="Foto 7" class="slide">
+        <img src="images/8.jpeg" alt="Foto 8" class="slide">
+        <img src="images/9.jpeg" alt="Foto 9" class="slide">
+        <img src="images/10.jpeg" alt="Foto 10" class="slide">
+        <img src="images/11.jpeg" alt="Foto 11" class="slide">
+        <img src="images/12.jpeg" alt="Foto 12" class="slide">
+        <img src="images/13.jpeg" alt="Foto 13" class="slide">
+        <img src="images/14.jpeg" alt="Foto 14" class="slide">
+        <img src="images/16.jpeg" alt="Foto 16" class="slide">
+        <img src="images/17.jpeg" alt="Foto 17" class="slide">
+        <img src="images/18.jpeg" alt="Foto 18" class="slide">
+      </div>
+      <button class="next" onclick="changeSlide(1, event)">❯</button>
+    </div>
+
+    <!-- Player de áudio escondido -->
+    <audio id="audio" src="music/Essa é a ultima volta.mp3" preload="auto"></audio>
+  </div>
+
+  <script>
+    // Cálculo de quantos dias estão juntos
+    const startDate = new Date("2024-12-28");
+    const today = new Date();
+
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    document.getElementById("days-together").textContent = diffDays;
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slideshow img');
+
+    // Exibir o slide atual e ocultar os outros
+    function showSlide(index) {
+      if (index >= slides.length) slideIndex = 0;
+      if (index < 0) slideIndex = slides.length - 1;
+
+      slides.forEach((slide, i) => {
+        if (i === slideIndex) {
+          slide.style.display = "block"; // Exibe a imagem atual
+        } else {
+          slide.style.display = "none"; // Oculta as outras imagens
+        }
+      });
+    }
+
+    // Navegação entre os slides
+    function changeSlide(n, event) {
+      event.stopPropagation(); // Impede o clique de afetar a função playMusic
+      slideIndex += n;
+      showSlide(slideIndex);
+    }
+
+    showSlide(slideIndex); // Inicia o slideshow mostrando a primeira imagem
+
+    // Função para tocar a música ao clicar na tela
+    function playMusic(event) {
+      if (event.target.closest('.slideshow')) return; // Ignora cliques dentro do slideshow
+
+      const audio = document.getElementById("audio");
+      if (audio.paused) {
+        audio.play(); // Inicia a música
+      } else {
+        audio.pause(); // Pausa a música
+      }
+    }
+  </script>
+</body>
+</html>

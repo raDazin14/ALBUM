@@ -1,26 +1,77 @@
-
-.text {
-    color: rgb(0, 204, 255);
-    text-align: center;
-}
-
 body {
-    background-color: rgb(0, 0, 0);
-    
-}
-
-img {
-    width:250px;
-    display: block;
-    margin-left: auto; 
-    margin-right: auto;
-    height: 250px;
-    border: 5px solid rgb(255, 255, 255);
-} 
-
-.texto {
-    color: white;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
     text-align: center;
+    color: #fff;
+  }
+
+  .container {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0.2em;
     font-family: system-ui;
-    
+    font-style: italic;
+    font-style: oblique;
+    font-family: cursive;
+  }
+
+  .start-date p {
+    font-size: 1.5em;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
+
+  .slideshow {
+    position: relative;
+    width: 70%;
+    margin: 20px auto;
+  }
+
+  .slideshow .slides {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .slideshow img {
+    width: 300px;   /* Remove a largura fixa */
+    height: 600px;  /* Deixa a altura proporcional ao tamanho original da imagem */
+    max-width: 100%; /* Garante que as imagens não ultrapassem o tamanho do contêiner */
+    border-radius: 10px;
+    transition: opacity 1s ease;
+    object-fit: contain; /* Garante que a imagem se ajuste corretamente sem deformar */
+    margin: 0 auto;
+    display: none; /* Começar ocultando as imagens */
 }
+
+  .slideshow .prev, .slideshow .next {
+    position: absolute;
+    top: 50%;
+    font-size: 2em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  .slideshow .prev {
+    left: 10px;
+  }
+
+  .slideshow .next {
+    right: 10px;
+  }
